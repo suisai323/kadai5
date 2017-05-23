@@ -26,14 +26,32 @@ public class IntToEng {
     	String answer3 = "";
     	String answer4 = "";
     	
-    	if (n>=0 && n<=10){
     	if (n == 0) {
     		answer = "zero";
     	}
-    	answer = digit1(x1, answer);
+    	
+    	if (n>0 && n<=10){
+    		answer = digit1(x1, answer);
     	}
     	
-    	if (n ==11) {
+    	answer = teen(n, answer); 
+    	
+    	if (n>=20) {
+    		answer2 = digit10(x10, answer2);
+    		answer = digit1(x1, answer);
+    	}
+    	
+    	answer3 = digit100(x100, answer3);
+
+    	answer4 = digit1000(x1000, answer4);
+
+    	if (n == 10000) answer = "ten thousand";
+    	
+        return   answer4 + answer3 + answer2 + answer;
+    }
+
+	private static String teen(int n, String answer) {
+		if (n ==11) {
     		answer = "eleven";
     	} else if (n == 12) {
     		answer = "twelve";
@@ -51,42 +69,32 @@ public class IntToEng {
     		answer = "eighteen";
     	} else if (n == 19) {
     		answer = "nineteen";
-    	} 
-    	
-    	if (n>=20) {
-    	answer2 = digit10(x10, answer2);
-    	
-    	answer = digit1(x1, answer);
     	}
-    	
-    	answer3 = digit100(x100, answer3);
-    	
-    	if (n >= 1000){//answer = "one thousand";
-    		if(x1000 == 1) {
-    			answer4 = "one thousand ";
-    		} else if (x1000 == 2) {
-    			answer4 = "two thousand ";
-    		} else if (x1000 == 3) {
-    			answer4 = "three thousand ";
-    		} else if (x1000 == 4) {
-    			answer4 = "four thousand ";
-    		} else if (x1000 == 5) {
-    			answer4 = "five thousand ";
-    		} else if (x1000 == 6) {
-    			answer4 = "six thousand ";
-    		} else if (x1000 == 7) {
-    			answer4 = "seven thousand ";
-    		} else if (x1000 == 8) {
-    			answer4 = "eight thousand ";
-    		} else if (x1000 == 9) {
-    			answer4 = "nine thousand ";
-    		}
-    	}
-    	
-    	if (n == 10000) answer = "ten thousand";
-    	
-        return   answer4 + answer3 + answer2 + answer;
-    }
+		return answer;
+	}
+
+	private static String digit1000(int x1000, String answer4) {
+		if(x1000 == 1) {
+			answer4 = "one thousand ";
+		} else if (x1000 == 2) {
+			answer4 = "two thousand ";
+		} else if (x1000 == 3) {
+			answer4 = "three thousand ";
+		} else if (x1000 == 4) {
+			answer4 = "four thousand ";
+		} else if (x1000 == 5) {
+			answer4 = "five thousand ";
+		} else if (x1000 == 6) {
+			answer4 = "six thousand ";
+		} else if (x1000 == 7) {
+			answer4 = "seven thousand ";
+		} else if (x1000 == 8) {
+			answer4 = "eight thousand ";
+		} else if (x1000 == 9) {
+			answer4 = "nine thousand ";
+		}
+		return answer4;
+	}
 
 	private static String digit100(int x100, String answer3) {
 		if (x100 == 1) {
