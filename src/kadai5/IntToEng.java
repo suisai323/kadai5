@@ -21,33 +21,35 @@ public class IntToEng {
     	int x1 = n % 10;
     	if (x10 >=10) x10 %= 10;
     	if (x100 >= 10) x100 %= 10;
-    	String answer = "";
-    	String answer2 = "";
-    	String answer3 = "";
-    	String answer4 = "";
+    	String answer1 = "";
+    	String answer10 = "";
+    	String answer100 = "";
+    	String answer1000 = "";
     	
     	if (n == 0) {
-    		answer = "zero";
+    		answer1 = "zero";
     	}
     	
     	if (n>0 && n<=10){
-    		answer = digit1(x1, answer);
+    		answer1 = digit1(x1, answer1);
     	}
     	
-    	answer = teen(n, answer); 
+    	answer1 = teen(n, answer1); 
     	
     	if (n>=20) {
-    		answer2 = digit10(x10, answer2);
-    		answer = digit1(x1, answer);
+    		answer10 = digit10(x10, answer10);
+    		answer1 = digit1(x1, answer1);
     	}
     	
-    	answer3 = digit100(x100, answer3);
+    	answer100 = digit100(x100, answer100);
 
-    	answer4 = digit1000(x1000, answer4);
+    	answer1000 = digit1000(x1000, answer1000);
 
-    	if (n == 10000) answer = "ten thousand";
+    	if (n == 10000) answer1 = "ten thousand";
     	
-        return   answer4 + answer3 + answer2 + answer;
+    	if (n > 10000 || n < 0) answer1 = "表示できません";
+    	
+        return   answer1000 + answer100 + answer10 + answer1;
     }
 
 	private static String teen(int n, String answer) {
