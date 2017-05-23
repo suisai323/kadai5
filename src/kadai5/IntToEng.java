@@ -5,22 +5,26 @@ public class IntToEng {
 	// メインメソッド
     public static void main(String[] args) {
 
+    	for(int i=0; i<5; i++){
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
 
         System.out.println(translateEng(input));
-
+    	}
     }
 
     // 数値を英訳する変換するメソッド
     static String translateEng(int n) {
+    	int x1000 = n / 1000;
     	int x100 = n / 100;
     	int x10 = n / 10;
     	int x1 = n % 10;
     	if (x10 >=10) x10 %= 10;
+    	if (x100 >= 10) x100 %= 10;
     	String answer = "";
     	String answer2 = "";
     	String answer3 = "";
+    	String answer4 = "";
     	
     	if (n>=0 && n<=10){
     	if (n == 0) {
@@ -57,9 +61,31 @@ public class IntToEng {
     	
     	answer3 = digit100(x100, answer3);
     	
-    	if (n == 1000) answer = "one thousand";
+    	if (n >= 1000){//answer = "one thousand";
+    		if(x1000 == 1) {
+    			answer4 = "one thousand ";
+    		} else if (x1000 == 2) {
+    			answer4 = "two thousand ";
+    		} else if (x1000 == 3) {
+    			answer4 = "three thousand ";
+    		} else if (x1000 == 4) {
+    			answer4 = "four thousand ";
+    		} else if (x1000 == 5) {
+    			answer4 = "five thousand ";
+    		} else if (x1000 == 6) {
+    			answer4 = "six thousand ";
+    		} else if (x1000 == 7) {
+    			answer4 = "seven thousand ";
+    		} else if (x1000 == 8) {
+    			answer4 = "eight thousand ";
+    		} else if (x1000 == 9) {
+    			answer4 = "nine thousand ";
+    		}
+    	}
     	
-        return  answer3 + answer2 + answer;
+    	if (n == 10000) answer = "ten thousand";
+    	
+        return   answer4 + answer3 + answer2 + answer;
     }
 
 	private static String digit100(int x100, String answer3) {
